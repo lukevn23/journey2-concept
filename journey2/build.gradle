@@ -53,7 +53,7 @@ publishing {
         release(MavenPublication) {
             groupId = 'ninja.luke.mobi'
             artifactId = 'journey2'
-            version = '2.1.6-concept3'
+            version = '2.1.6-concept4'
 
             afterEvaluate {
                 from components.release
