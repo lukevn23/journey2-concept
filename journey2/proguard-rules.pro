@@ -20,20 +20,16 @@
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
 
--keep public class ninja.luke.mobi.journey2.scope.** {
-    public protected *;
-}
-
--keep public class ninja.luke.mobi.journey2.contract.** {
-    public protected *;
-}
-
--keep public class ninja.luke.mobi.journey2.j2base.J2BaseNavigator {
-    public protected *;
-}
-
--keep public class ninja.luke.mobi.journey2.j2base.J2BaseSdk {
-    public protected *;
-}
-
--dontwarn com.google.android.material.R$id
+#-keep public class ninja.luke.mobi.journey2.scope.** {
+#    public protected *;
+#}
+#
+#-keep public class ninja.luke.mobi.journey2.contract.** {
+#    public protected *;
+#}
+#
+#-keep public class ninja.luke.mobi.journey2.j2base.** {
+#    public protected *;
+#}
+#
+#-dontwarn com.google.android.material.R$id

@@ -182,7 +182,7 @@ abstract class J2BaseSdk<Route : J2Route> : J2ContractSdk<Route>,
     }
 
     protected inline fun <reified T : ViewModel> Module.journeyViewModel(
-        qualifier: Qualifier? = null, //qualifier(journeyName),//use this way for 2.1.6
+        qualifier: Qualifier? = qualifier(journeyName),//use this way for 2.1.6
         override: Boolean = false,
         noinline definition: Definition<T>
     ): BeanDefinition<T> {
