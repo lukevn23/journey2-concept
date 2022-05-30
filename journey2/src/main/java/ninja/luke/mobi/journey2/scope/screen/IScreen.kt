@@ -159,7 +159,7 @@ fun IScreen<*>.injectJourneyNavigatorState(): Lazy<J2BaseNavigator> {
 inline fun <reified T : ViewModel> IScreen<*>.injectJourneyViewModel(): Lazy<T> {
     return lazy(LazyThreadSafetyMode.NONE) {
         Log.d(Constant.TAG, "screenVM:   injectJourneyViewModel")
-        getSharedViewModelStoreOwner().getViewModel()//use this way for both 2.2.1 and 2.1.6
+        getSharedViewModelStoreOwner().getViewModel(qualifier = qualifier(sdk.journeyName))//use this way for both 2.2.1 and 2.1.6
 //        journeyFragmentOrCrash().getViewModel()//todo try for 3.1.6
     }
 }
@@ -167,7 +167,7 @@ inline fun <reified T : ViewModel> IScreen<*>.injectJourneyViewModel(): Lazy<T> 
 inline fun <reified T : ViewModel> IScreen<*>.injectJourneyViewModelState(): Lazy<T> {
     return lazy(LazyThreadSafetyMode.NONE) {
         Log.d(Constant.TAG, "screenVM:   injectJourneyViewModelState")
-        getSharedSavedStateRegistryOwner().getStateViewModel()//use this way for both 2.2.1 and 2.1.6
+        getSharedSavedStateRegistryOwner().getStateViewModel(qualifier = qualifier(sdk.journeyName))//use this way for both 2.2.1 and 2.1.6
 //        journeyFragmentOrCrash().getStateViewModel()//todo try for 3.1.6
     }
 }
@@ -176,7 +176,7 @@ inline fun <reified T : ViewModel> IScreen<*>.injectScreenViewModel(): Lazy<T> {
     return lazy(LazyThreadSafetyMode.NONE) {
         Log.d(Constant.TAG, "screenVM:   injectScreenViewModel")
         if (this is Fragment) {
-            this.getViewModel(qualifier = qualifier(sdk.journeyName))//use this way for both 2.2.1 and 2.1.6
+            this.getViewModel()//use this way for both 2.2.1 and 2.1.6
 //            this.getViewModel()//todo try for 3.1.6
         } else {
             throw RuntimeException("Screen ${this::class.java.simpleName} is not a fragment")
@@ -188,7 +188,7 @@ inline fun <reified T : ViewModel> IScreen<*>.injectScreenViewModelState(): Lazy
     return lazy(LazyThreadSafetyMode.NONE) {
         Log.d(Constant.TAG, "screenVM:   injectScreenViewModelState")
         if (this is Fragment) {
-            this.getStateViewModel(qualifier = qualifier(sdk.journeyName))//use this way for both 2.2.1 and 2.1.6
+            this.getStateViewModel()//use this way for both 2.2.1 and 2.1.6
 //            this.getStateViewModel()//todo try for 3.1.6
         } else {
             throw RuntimeException("Screen ${this::class.java.simpleName} is not a fragment")
